@@ -21,10 +21,10 @@ def hello():
    question = request.form.get('question')
 
    if name:
-       print('Request for page received with question=%s' % question)
-       return render_template('hello.html', name = question)
+       print('Request for home page received with question=%s' % question)
+       return render_template('hello.html', question = question)
    else:
-       print('Request for page received with no question or blank question -- redirecting')
+       print('Request for hello page received with no question or blank name -- redirecting')
        return redirect(url_for('index'))
 
 
