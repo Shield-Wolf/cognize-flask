@@ -3,7 +3,7 @@ import os
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 
-app = Flask(__name__)
+app = Flask(__question__)
 
 
 @app.route('/')
@@ -20,7 +20,7 @@ def favicon():
 def hello():
    question = request.form.get('question')
 
-   if name:
+   if question:
        print('Request for home page received with question=%s' % question)
        return render_template('hello.html', question = question)
    else:
