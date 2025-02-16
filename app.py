@@ -36,6 +36,9 @@ def hello():
 
    if question:
        print('Request for home page received with question=%s' % question)
+        # Call Azure OpenAI
+        # Call Azure OpenAI with values
+
        return render_template('hello.html', question = question)
    else:
        print('Request for hello page received with no question or blank name -- redirecting')
