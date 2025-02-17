@@ -23,7 +23,9 @@ def index():
    print('AZURE_OPEN_AI_REGION=%s' % AZURE_OPEN_AI_REGION)
    AZURE_TENANT_ID = os.environ.get("AZURE_TENANT_ID")
    print('AZURE_TENANT_ID=%s' % AZURE_TENANT_ID)
-   
+   APP_PERMISSION_KEY = os.environ.get("APP_PERMISSION_KEY")
+   print('APP_PERMISSION_KEY=%s' % APP_PERMISSION_KEY)
+
    return render_template('index.html')
 
 @app.route('/favicon.ico')
@@ -31,16 +33,23 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-@app.route('/hello', methods=['POST'])
-def hello():
+@app.route('/question', methods=['POST'])
+def question():
    question = request.form.get('question')
+   key = request.form.get('key')
 
    if question:
        print('Request for home page received with question=%s' % question)
         # Call Azure OpenAI
         # Call Azure OpenAI with values
-        
-       return render_template('hello.html', question = question)
+       print('Request key=%s' % os.environ.get("APP_PERMISSION_KEY" ))
+       if key != os.environ.get("APP_PERMISSION_KEY"):
+              print('Request for home page received with key redirecting=%s' % key)
+              return redirect(url_for('index'))
+
+        # Call Azure OpenAI
+        # Call Azure OpenAI with values
+       return render_template('question.html', question = question, key = key)
    else:
        print('Request for hello page received with no question or blank name -- redirecting')
        return redirect(url_for('index'))
