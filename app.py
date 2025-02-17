@@ -4,6 +4,7 @@ from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 
 from azure.identity import DefaultAzureCredential
+
 from azure.keyvault.secrets import SecretClient
 
 app = Flask(__name__)
@@ -38,7 +39,7 @@ def hello():
        print('Request for home page received with question=%s' % question)
         # Call Azure OpenAI
         # Call Azure OpenAI with values
-
+        
        return render_template('hello.html', question = question)
    else:
        print('Request for hello page received with no question or blank name -- redirecting')
