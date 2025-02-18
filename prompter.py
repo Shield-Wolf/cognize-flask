@@ -62,4 +62,4 @@ def chatgpt(prompt):
          stream=False
     )
 
-    return "this is a canned response from promopter 2"
+    return "this is a canned response from promopter 3"
