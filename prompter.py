@@ -24,11 +24,13 @@ def chatgpt(prompt):
     print('PROMPT AZURE_TENANT_ID=%s' % AZURE_TENANT_ID)
     APP_PERMISSION_KEY = os.environ.get("APP_PERMISSION_KEY")
     print('PROMPT APP_PERMISSION_KEY=%s' % APP_PERMISSION_KEY)
-    
+    AZURE_API_VERSION = os.environ.get("AZURE_API_VERSION")
+    print('PROMPT AZURE_API_VERSIONY=%s' % AZURE_API_VERSION)
+
     endpoint = AZURE_OPEN_AI_ENDPOINT
     deployment = AZURE_OPEN_AI_DEPLOYMENT
     subscription_key = AZURE_OPEN_AI_KEY
-
+    api_version = AZURE_API_VERSION
     # Initialize Azure OpenAI Service client with key-based authentication    
     client = AzureOpenAI(  
         azure_endpoint=endpoint,  
