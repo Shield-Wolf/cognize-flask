@@ -35,16 +35,16 @@ def chatgpt(prompt):
          api_version=api_version
     )
     # Prepare the chat prompt 
-    #chat_prompt = [
-    #    {
-    #    "role": "system",
-    #    "content": "You are an AI assistant that helps people find information."
-    #    },
-    #    {
-    #        "role": "user",
-    #        "content": prompt
-    #    }
-    #] 
+    chat_prompt = [
+        {
+        "role": "system",
+        "content": "You are an AI assistant that helps people find information."
+        },
+        {
+            "role": "user",
+            "content": prompt
+        }
+    ] 
 
     # Include speech result if speech is enabled  
     #messages = chat_prompt  
@@ -62,4 +62,4 @@ def chatgpt(prompt):
     #     stream=False
     # )
 
-    return "this is a canned response from promopter"
+    return "this is a canned response from promopter 2"
