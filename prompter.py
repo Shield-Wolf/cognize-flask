@@ -52,7 +52,7 @@ def chatgpt(prompt):
     # Generate the completion  
     completion = client.chat.completions.create(  
          model=deployment,
-         messages=messages,
+         messages=chat_prompt,
          max_tokens=800,  
          temperature=0.7,  
          top_p=0.95,  
@@ -62,4 +62,4 @@ def chatgpt(prompt):
          stream=False
     )
 
-    return "this is a canned response from promopter 3"
+    return "this is a canned response from promopter 4"
