@@ -1,17 +1,12 @@
 import os
-import prompter
-import prompter_basic
+# import prompter
+# import prompter_basic
 
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 
-from azure.identity import DefaultAzureCredential
-
-from azure.keyvault.secrets import SecretClient
-
 app = Flask(__name__)
-
 
 @app.route('/')
 def index():
