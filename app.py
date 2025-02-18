@@ -1,6 +1,6 @@
 import os
 # import prompter
-# import prompter_basic
+import prompter
 
 
 from flask import (Flask, redirect, render_template, request,
@@ -21,7 +21,7 @@ def favicon():
 def question():
     question = request.form.get('question')
     key = request.form.get('key')                               
-    response ="canned response"
+    response = prompter.chatgpt(question)
     
     return render_template('question.html', question = question, key = key, response = response)
 #@app.route('/question', methods=['POST'])
