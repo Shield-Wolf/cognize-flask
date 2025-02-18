@@ -9,4 +9,4 @@ You communicate effectively and succinctly.
 """
 
 def chatgpt(prompt):
-    return "This is a canned response"
+    return "This is a canned response from prompter"
