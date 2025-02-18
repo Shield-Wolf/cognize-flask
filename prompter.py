@@ -30,11 +30,11 @@ def chatgpt(prompt):
     api_version = AZURE_API_VERSION
 
     # Initialize Azure OpenAI Service client with key-based authentication
-    client = AzureOpenAI(  
-         azure_endpoint=endpoint,  
-         api_key=subscription_key,  
-         api_version=api_version
-    )
+    # client = AzureOpenAI(  
+    #      azure_endpoint=endpoint,  
+    #     api_key=subscription_key,  
+    #     api_version=api_version
+    # )
     # chat_prompt = [
     #     {
     #     "role": "system",
