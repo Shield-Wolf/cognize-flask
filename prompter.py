@@ -32,7 +32,7 @@ def chatgpt(prompt):
     client = AzureOpenAI(  
         azure_endpoint=endpoint,  
         api_key=subscription_key,  
-        api_version="2024-05-01-preview",
+        api_version=api_version,
     )
     
 
@@ -48,7 +48,7 @@ def chatgpt(prompt):
         }
     ] 
 
-        # Include speech result if speech is enabled  
+    # Include speech result if speech is enabled  
     messages = chat_prompt  
     
     # Generate the completion  
@@ -64,11 +64,4 @@ def chatgpt(prompt):
         stream=False
     )
 
-    # print(completion.to_json()) fir debugging
-    completion_json = completion.to_json()
-    print("The complete json is:" + completion_json) 
-
-    response = completion.choices[0].message.content
-    print("the message is: " + response) 
-
-    return response
+    return "this is a canned response from promopter"
