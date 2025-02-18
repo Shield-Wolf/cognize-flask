@@ -21,7 +21,7 @@ def favicon():
 def question():
     question = request.form.get('question')
     key = request.form.get('key')                               
-    response = prompter.chatgpt("canned question")
+    response = prompter.chatgpt(question)
     response = "This is a canned response"
     
     return render_template('question.html', question = question, key = key, response = response)
