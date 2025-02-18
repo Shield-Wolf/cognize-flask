@@ -47,5 +47,28 @@ def chatgpt(prompt):
             "content": prompt
         }
     ] 
+
+        # Include speech result if speech is enabled  
+    messages = chat_prompt  
     
-    return "This is a canned response from prompter"
+    # Generate the completion  
+    completion = client.chat.completions.create(  
+        model=deployment,
+        messages=messages,
+        max_tokens=800,  
+        temperature=0.7,  
+        top_p=0.95,  
+        frequency_penalty=0,  
+        presence_penalty=0,
+        stop=None,  
+        stream=False
+    )
+
+    # print(completion.to_json()) fir debugging
+    completion_json = completion.to_json()
+    print("The complete json is:" + completion_json) 
+
+    response = completion.choices[0].message.content
+    print("the message is: " + response) 
+
+    return response
