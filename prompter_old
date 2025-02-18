@@ -1,0 +1,75 @@
+import semantic_kernel as sk
+import openai
+import os
+from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
+from semantic_kernel.connectors.ai.open_ai import AzureChatCompletion
+from semantic_kernel.connectors.ai.chat_completion_client_base import ChatCompletionClientBase
+from semantic_kernel.connectors.ai.open_ai import OpenAIChatPromptExecutionSettings
+from semantic_kernel.connectors.ai.chat_completion_client_base import ChatCompletionClientBase
+from semantic_kernel.contents.chat_history import ChatHistory
+from semantic_kernel import Kernel
+
+system_message = """
+You are a chat bot. Your name is Cognize and
+you have one goal: figure out what people need.
+You communicate effectively and succinctly.
+"""
+
+async def chatgpt(prompt):
+    print('Request for index page received')
+    AZURE_KEY_VAULT_URL = os.environ.get("AZURE_KEY_VAULT_URL")
+    print('PROMPT AZURE_KEY_VAULT_URL=%s' % AZURE_KEY_VAULT_URL)
+    AZURE_OPEN_AI_ENDPOINT = os.environ.get("AZURE_OPEN_AI_ENDPOINT")
+    print('PROMPT AZURE_OPEN_AI_ENDPOINT=%s' % AZURE_OPEN_AI_ENDPOINT)
+    AZURE_OPEN_AI_KEY = os.environ.get("AZURE_OPEN_AI_KEY")
+    print('PROMPT AZURE_OPEN_AI_KEY=%s' % AZURE_OPEN_AI_KEY)
+    AZURE_OPEN_AI_REGION = os.environ.get("AZURE_OPEN_AI_REGION")
+    print('PROMPT AZURE_OPEN_AI_REGION=%s' % AZURE_OPEN_AI_REGION)
+    AZURE_OPEN_AI_DEPLOYMENT = os.environ.get("AZURE_OPEN_AI_DEPLOYMENT")
+    print('PROMPT AZURE_OPEN_AI_DEPLOYMENT=%s' % AZURE_OPEN_AI_DEPLOYMENT)
+    AZURE_TENANT_ID = os.environ.get("AZURE_TENANT_ID")
+    print('PROMPT AZURE_TENANT_ID=%s' % AZURE_TENANT_ID)
+    APP_PERMISSION_KEY = os.environ.get("APP_PERMISSION_KEY")
+    print('PROMPT APP_PERMISSION_KEY=%s' % APP_PERMISSION_KEY)
+    
+
+    chat_completion_service = AzureChatCompletion(
+    deployment_name=AZURE_OPEN_AI_DEPLOYMENT,  
+    api_key=AZURE_OPEN_AI_KEY,
+    endpoint=AZURE_OPEN_AI_ENDPOINT, #, # Used to point to your service
+    service_id="my-service-id") # Optional; for targeting specific services within Semantic Kernel
+
+    # Initialize the kernel
+    kernel = Kernel()
+
+    # Add the chat completion service created above to the kernel
+    kernel.add_service(chat_completion_service)
+    
+
+    # Retrieve the chat completion service by id
+    ###chat_completion_service = kernel.get_service(service_id="my-service-id")
+    execution_settings = OpenAIChatPromptExecutionSettings()
+    chat_history = ChatHistory()
+    chat_history.add_system_message(system_message)
+    chat_history.add_user_message(prompt)
+
+
+    # Retrieve the chat completion service by id
+    chat_completion_service = kernel.get_service(service_id="my-service-id")
+
+    
+    #response = chat_completion_service(chat_history, settings=execution_settings)
+
+    response = await chat_completion_service.get_chat_message_content(
+    chat_history,
+    settings=execution_settings,
+    chatptompt=prompt)
+
+    ###return response
+
+  
+
+    completion = prompt #TEMPORARY
+
+    #return completion
+    return prompt

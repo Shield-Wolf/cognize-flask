@@ -1,4 +1,5 @@
 import os
+import prompter
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
@@ -12,26 +13,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-   print('Request for index page received')
-   AZURE_KEY_VAULT_URL = os.environ.get("AZURE_KEY_VAULT_URL")
-   print('AZURE_KEY_VAULT_URL=%s' % AZURE_KEY_VAULT_URL)
-   AZURE_OPEN_AI_ENDPOINT = os.environ.get("AZURE_OPEN_AI_ENDPOINT")
-   print('AZURE_OPEN_AI_ENDPOINT=%s' % AZURE_OPEN_AI_ENDPOINT)
-   AZURE_OPEN_AI_KEY = os.environ.get("AZURE_OPEN_AI_KEY")
-   print('AZURE_OPEN_AI_KEY=%s' % AZURE_OPEN_AI_KEY)
-   AZURE_OPEN_AI_REGION = os.environ.get("AZURE_OPEN_AI_REGION")
-   print('AZURE_OPEN_AI_REGION=%s' % AZURE_OPEN_AI_REGION)
-   AZURE_TENANT_ID = os.environ.get("AZURE_TENANT_ID")
-   print('AZURE_TENANT_ID=%s' % AZURE_TENANT_ID)
-   APP_PERMISSION_KEY = os.environ.get("APP_PERMISSION_KEY")
-   print('APP_PERMISSION_KEY=%s' % APP_PERMISSION_KEY)
-
    return render_template('index.html')
 
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
-                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+                               'cognize-logo-favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/question', methods=['POST'])
 def question():
@@ -47,9 +34,11 @@ def question():
               print('Request for home page received with key redirecting=%s' % key)
               return redirect(url_for('index'))
 
-        # Call Azure OpenAI
-        # Call Azure OpenAI with values
-       return render_template('question.html', question = question, key = key)
+       # Call Azure OpenAI
+       # Call Azure OpenAI with values
+       response = prompter.chatgpt(question)
+       print('Response from Azure OpenAI=%s' % response)
+       return render_template('question.html', question = question, key = key, response = response)
    else:
        print('Request for hello page received with no question or blank name -- redirecting')
        return redirect(url_for('index'))
