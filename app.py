@@ -1,5 +1,7 @@
 import os
 import prompter
+import prompter_basic
+
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
@@ -36,7 +38,7 @@ def question():
 
        # Call Azure OpenAI
        # Call Azure OpenAI with values
-       response = prompter.chatgpt(question)
+       response = prompter_basic.chatgpt(question)
        print('Response from Azure OpenAI=%s' % response)
        return render_template('question.html', question = question, key = key, response = response)
    else:
