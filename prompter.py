@@ -47,7 +47,7 @@ def chatgpt(prompt):
     # ] 
 
     # Include speech result if speech is enabled  
-    messages = chat_prompt  
+    # messages = chat_prompt  
     # Generate the completion  
     # completion = client.chat.completions.create(  
     #      model=deployment,
