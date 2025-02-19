@@ -35,7 +35,7 @@ def chatgpt(prompt):
     client = AzureOpenAI(  
         azure_endpoint=endpoint,  
         api_key=subscription_key,  
-        api_version="2024-05-01-preview",
+        api_version=api_version,
     )
     # client = AzureOpenAI(  
     #      azure_endpoint=endpoint,  
@@ -68,4 +68,4 @@ def chatgpt(prompt):
     #      stream=False
     # )
 
-    return "this is a canned response from promopter 11"
+    return "this is a canned response from promopter 12" 
