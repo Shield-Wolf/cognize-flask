@@ -42,16 +42,16 @@ def chatgpt(prompt):
     #     api_key=subscription_key,  
     #     api_version=api_version
     # )
-    # chat_prompt = [
-    #     {
-    #     "role": "system",
-    #     "content": "You are an AI assistant that helps people find information."
-    #     },
-    #     {
-    #         "role": "user",
-    #         "content": prompt
-    #     }
-    # ] 
+    chat_prompt = [
+        {
+         "role": "system",
+         "content": "You are an AI assistant that helps people find information."
+         },
+         {
+             "role": "user",
+             "content": prompt
+         }
+    ] 
 
     # Include speech result if speech is enabled  
     # messages = chat_prompt  
