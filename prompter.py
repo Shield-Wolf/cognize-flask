@@ -32,6 +32,11 @@ def chatgpt(prompt):
     api_version = AZURE_API_VERSION
 
     # Initialize Azure OpenAI Service client with key-based authentication
+    client = AzureOpenAI(  
+        azure_endpoint=endpoint,  
+        api_key=subscription_key,  
+        api_version="2024-05-01-preview",
+    )
     # client = AzureOpenAI(  
     #      azure_endpoint=endpoint,  
     #     api_key=subscription_key,  
@@ -63,4 +68,4 @@ def chatgpt(prompt):
     #      stream=False
     # )
 
-    return "this is a canned response from promopter 10"
+    return "this is a canned response from promopter 11"
