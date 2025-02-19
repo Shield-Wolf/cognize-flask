@@ -17,12 +17,12 @@ def chatgpt(prompt):
     print('PROMPT AZURE_OPEN_AI_REGION=%s' % AZURE_OPEN_AI_REGION)
     AZURE_OPEN_AI_DEPLOYMENT = os.environ.get("AZURE_OPEN_AI_DEPLOYMENT")
     print('PROMPT AZURE_OPEN_AI_DEPLOYMENT=%s' % AZURE_OPEN_AI_DEPLOYMENT)
-    AZURE_TENANT_ID = os.environ.get("AZURE_TENANT_ID")
-    print('PROMPT AZURE_TENANT_ID=%s' % AZURE_TENANT_ID)
-    APP_PERMISSION_KEY = os.environ.get("APP_PERMISSION_KEY")
-    print('PROMPT APP_PERMISSION_KEY=%s' % APP_PERMISSION_KEY)
-    AZURE_API_VERSION = os.environ.get("AZURE_API_VERSION")
-    print('PROMPT AZURE_API_VERSIONY=%s' % AZURE_API_VERSION)
+    #AZURE_TENANT_ID = os.environ.get("AZURE_TENANT_ID")
+    #print('PROMPT AZURE_TENANT_ID=%s' % AZURE_TENANT_ID)
+    #APP_PERMISSION_KEY = os.environ.get("APP_PERMISSION_KEY")
+    #print('PROMPT APP_PERMISSION_KEY=%s' % APP_PERMISSION_KEY)
+    #AZURE_API_VERSION = os.environ.get("AZURE_API_VERSION")
+    #print('PROMPT AZURE_API_VERSIONY=%s' % AZURE_API_VERSION)
 
     # The above code all works
 
@@ -63,4 +63,4 @@ def chatgpt(prompt):
     #      stream=False
     # )
 
-    return "this is a canned response from promopter 6"
+    return "this is a canned response from promopter 7"
