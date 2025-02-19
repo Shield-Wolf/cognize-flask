@@ -1,12 +1,13 @@
 
 import openai
 import os
+import logging
 from openai import AzureOpenAI 
 #from openai import AzureOpenAI 
 
 def chatgpt(prompt):
-    # print('Request for index page received')
-    # AZURE_KEY_VAULT_URL = os.environ.get("AZURE_KEY_VAULT_URL")
+    print('Request for index page received')
+    AZURE_KEY_VAULT_URL = os.environ.get("AZURE_KEY_VAULT_URL")
     # print('PROMPT AZURE_KEY_VAULT_URL=%s' % AZURE_KEY_VAULT_URL)
     # AZURE_OPEN_AI_ENDPOINT = os.environ.get("AZURE_OPEN_AI_ENDPOINT")
     # print('PROMPT AZURE_OPEN_AI_ENDPOINT=%s' % AZURE_OPEN_AI_ENDPOINT)
