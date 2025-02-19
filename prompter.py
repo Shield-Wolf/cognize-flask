@@ -69,4 +69,4 @@ def chatgpt(prompt):
     #     stream=False
     #)
 
-    return prompt 
+    return prompt
