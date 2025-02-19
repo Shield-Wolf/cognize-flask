@@ -54,18 +54,18 @@ def chatgpt(prompt):
     ] 
 
     # Include speech result if speech is enabled  
-    # messages = chat_prompt  
-    # Generate the completion  
-    # completion = client.chat.completions.create(  
-    #      model=deployment,
-    #      messages=chat_prompt,
-    #      max_tokens=800,  
-    #      temperature=0.7,  
-    #      top_p=0.95,  
-    #      frequency_penalty=0,  
-    #      presence_penalty=0,
-    #      stop=None,  
-    #      stream=False
-    # )
+    messages = chat_prompt  
+    Generate the completion  
+    completion = client.chat.completions.create(  
+         model=deployment,
+         messages=chat_prompt,
+         max_tokens=800,  
+         temperature=0.7,  
+         top_p=0.95,  
+         frequency_penalty=0,  
+         presence_penalty=0,
+         stop=None,  
+         stream=False
+    )
 
-    return "this is a canned response from promopter 12" 
+    return "this is a canned response from promopter 13" 
