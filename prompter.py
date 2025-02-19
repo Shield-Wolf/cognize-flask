@@ -26,10 +26,10 @@ def chatgpt(prompt):
 
     # The above code all works
 
-    # endpoint = AZURE_OPEN_AI_ENDPOINT
-    # deployment = AZURE_OPEN_AI_DEPLOYMENT
-    # subscription_key = AZURE_OPEN_AI_KEY
-    # api_version = AZURE_API_VERSION
+    endpoint = AZURE_OPEN_AI_ENDPOINT
+    deployment = AZURE_OPEN_AI_DEPLOYMENT
+    subscription_key = AZURE_OPEN_AI_KEY
+    api_version = AZURE_API_VERSION
 
     # Initialize Azure OpenAI Service client with key-based authentication
     # client = AzureOpenAI(  
@@ -63,4 +63,4 @@ def chatgpt(prompt):
     #      stream=False
     # )
 
-    return "this is a canned response from promopter 9"
+    return "this is a canned response from promopter 10"
