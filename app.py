@@ -32,6 +32,11 @@ def question():
                print('Request for home page received with key redirecting=%s' % key)
                return redirect(url_for('index'))
 
+
+    # Call Azure OpenAI
+    # Call Azure OpenAI with values
+    response = prompter.chatgpt(question)
+    print('Response from Azure OpenAI=%s' % response)
     
     return render_template('question.html', question = question, key = key, response = response)
 #@app.route('/question', methods=['POST'])
