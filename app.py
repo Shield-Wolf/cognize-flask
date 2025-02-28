@@ -22,7 +22,16 @@ def question():
     question = request.form.get('question')
     key = request.form.get('key')                               
     response = prompter.chatgpt(question)
-   #response = "This is a canned response"
+    #response = "This is a canned response"
+    if question:
+        print('Request for home page received with question=%s' % question)
+         # Call Azure OpenAI
+         # Call Azure OpenAI with values
+        print('Request key=%s' % os.environ.get("APP_PERMISSION_KEY" ))
+        if key != os.environ.get("APP_PERMISSION_KEY"):
+               print('Request for home page received with key redirecting=%s' % key)
+               return redirect(url_for('index'))
+
     
     return render_template('question.html', question = question, key = key, response = response)
 #@app.route('/question', methods=['POST'])
