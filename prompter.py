@@ -57,16 +57,16 @@ def chatgpt(prompt):
     messages = chat_prompt  
 
     # Generate the completion  
-    # completion = client.chat.completions.create(  
-    #     model=deployment,
-    #     messages=chat_prompt,
-    #     max_tokens=800,  
-    #     temperature=0.7,  
-    #     top_p=0.95,  
-    #     frequency_penalty=0,  
-    #     presence_penalty=0,
-    #     stop=None,  
-    #     stream=False
-    #)
+    completion = client.chat.completions.create(  
+         model=deployment,
+         messages=chat_prompt,
+         max_tokens=800,  
+         temperature=0.7,  
+         top_p=0.95,  
+         frequency_penalty=0,  
+         presence_penalty=0,
+         stop=None,  
+         stream=False
+    )
 
     return prompt
