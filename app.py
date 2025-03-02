@@ -17,26 +17,26 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'cognize-logo-favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-@app.route('/question', methods=['POST'])
-def question():
-    question = request.form.get('question')
-    key = request.form.get('key')                               
-    response = prompter.chatgpt(question)
-    #response = "This is a canned response"
-    if question:
-        print('Request for home page received with question=%s' % question)
-         # Call Azure OpenAI
-         # Call Azure OpenAI with values
-        print('Request key=%s' % os.environ.get("APP_PERMISSION_KEY" ))
-        if key != os.environ.get("APP_PERMISSION_KEY"):
-               print('Request for home page received with key redirecting=%s' % key)
-               return redirect(url_for('index'))
+# @app.route('/question', methods=['POST'])
+# def question():
+#     question = request.form.get('question')
+#     key = request.form.get('key')                               
+#     response = prompter.chatgpt(question)
+#     #response = "This is a canned response"
+#     if question:
+#         print('Request for home page received with question=%s' % question)
+#          # Call Azure OpenAI
+#          # Call Azure OpenAI with values
+#         print('Request key=%s' % os.environ.get("APP_PERMISSION_KEY" ))
+#         if key != os.environ.get("APP_PERMISSION_KEY"):
+#                print('Request for home page received with key redirecting=%s' % key)
+#                return redirect(url_for('index'))
 
 
-    # Call Azure OpenAI
-    # Call Azure OpenAI with values
-##    response = prompter.chatgpt(question)
-##    print('Response from Azure OpenAI=%s' % response)
+#     # Call Azure OpenAI
+#     # Call Azure OpenAI with values
+# ##    response = prompter.chatgpt(question)
+# ##    print('Response from Azure OpenAI=%s' % response)
     
 ##    return render_template('question.html', question = question, key = key, response = response)
 app.route('/question', methods=['POST'])
