@@ -38,7 +38,7 @@ def question():
     response = prompter.chatgpt(question)
     print('Response from Azure OpenAI=%s' % response)
     
-##    return render_template('question.html', question = question, key = key, response = response)
+    return render_template('question.html', question = question, key = key, response = response)
 # @app.route('/question', methods=['POST'])
 # def question():
 #     question = request.form.get('question')
