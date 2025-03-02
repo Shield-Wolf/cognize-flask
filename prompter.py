@@ -56,16 +56,20 @@ def chatgpt(prompt):
     # Include speech result if speech is enabled  
     messages = chat_prompt  
 
-    # completion = client.chat.completions.create(  
-    #      model=deployment,
-    #      messages=chat_prompt,
-    #      max_tokens=800,  
-    #      temperature=0.7,  
-    #      top_p=0.95,  
-    #      frequency_penalty=0,  
-    #      presence_penalty=0,
-    #      stop=None,  
-    #      stream=False
-    # )
+    completion = client.chat.completions.create(  
+          model=deployment,
+          messages=chat_prompt,
+          max_tokens=800,  
+          temperature=0.7,  
+          top_p=0.95,  
+          frequency_penalty=0,  
+          presence_penalty=0,
+          stop=None,  
+          stream=False
+    )
 
-    return prompt
+    # response = prompt
+
+    response = completion.choices[0].message.content
+
+    return response
