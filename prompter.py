@@ -22,7 +22,7 @@ def chatgpt(prompt):
     APP_PERMISSION_KEY = os.environ.get("APP_PERMISSION_KEY")
     print('PROMPT APP_PERMISSION_KEY=%s' % APP_PERMISSION_KEY)
     AZURE_API_VERSION = os.environ.get("AZURE_API_VERSION")
-    print('PROMPT AZURE_API_VERSIONY=%s' % AZURE_API_VERSION)
+    print('PROMPT AZURE_API_VERSIONY=%s' % AZURE_API_VERSION) 
 
     # The above code all works
 
