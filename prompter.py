@@ -45,7 +45,7 @@ def chatgpt(prompt):
     chat_prompt = [
         {
          "role": "system",
-         "content": "You are an AI assistant that helps people find information."
+         "content": "You are an AI assistant that helps people find accurate information."
          },
          {
              "role": "user",
@@ -56,10 +56,10 @@ def chatgpt(prompt):
     # Include speech result if speech is enabled  
     messages = chat_prompt  
 
-    completion = client.chat.completions.create(  
+    first_response = client.chat.completions.create(  
           model=deployment,
           messages=chat_prompt,
-          max_tokens=800,  
+          max_tokens=150,  
           temperature=0.7,  
           top_p=0.95,  
           frequency_penalty=0,  
@@ -68,8 +68,37 @@ def chatgpt(prompt):
           stream=False
     )
 
+    print('first_response=%s' % first_response) 
+
+    answer = first_response.choices[0].message.content
+
+
+    # Adding a follow-up question
+    messages.append(
+        {"role": "assistant", "content": first_response.choices[0].message.content}
+    )
+    messages.append(
+        {"role": "user", "content": "Please provide 5 good resources supporting this asnwer"}
+    )
+    second_response = client.chat.completions.create(  
+          model=deployment,
+          messages=chat_prompt,
+          max_tokens=150,  
+          temperature=0.7,  
+          top_p=0.95,  
+          frequency_penalty=0,  
+          presence_penalty=0,
+          stop=None,  
+          stream=False
+    )
+
+    print('second_response=%s' % first_response) 
+
     # response = prompt
 
-    response = completion.choices[0].message.content
+    sources = second_response.choices[0].message.content
 
-    return response
+    print('sources=%s' % sources)
+
+    #return answer
+    return [answer, sources]

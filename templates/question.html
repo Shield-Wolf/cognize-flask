@@ -13,7 +13,11 @@
             <!--h1 class="display-6 fw-bold">Your question was: {{question}}</h1-->
            <div class="form-label fw-bold fs-5">The answer is: </div>
             <p class="fs-5">
-                {{response}}
+                {{answer}}
+            </p>
+            <div class="form-label fw-bold fs-5">The sources are: </div>
+            <p class="fs-5">
+                {{sources}}
             </p>
             <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg px-4 gap-3">Try another</a>
           </div>

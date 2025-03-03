@@ -21,7 +21,7 @@ def favicon():
 def question():
     question = request.form.get('question')
     key = request.form.get('key')                               
-    response = prompter.chatgpt(question)
+    #response = prompter.chatgpt(question)
     #response = "This is a canned response"
     if question:
         print('Request for home page received with question=%s' % question)
@@ -37,8 +37,10 @@ def question():
     # Call Azure OpenAI with values
     response = prompter.chatgpt(question)
     print('Response from Azure OpenAI=%s' % response)
+    answer = response[0]
+    sources = response[1]
     
-    return render_template('question.html', question = question, key = key, response = response)
+    return render_template('question.html', question = question, key = key, answer = answer, sources = sources)
 # @app.route('/question', methods=['POST'])
 # def question():
 #     question = request.form.get('question')
