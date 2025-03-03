@@ -56,6 +56,8 @@ def chatgpt(prompt):
     # Include speech result if speech is enabled  
     messages = chat_prompt  
 
+    print('chat_prompt=%s' % chat_prompt)
+
     first_response = client.chat.completions.create(  
           model=deployment,
           messages=chat_prompt,
@@ -78,12 +80,12 @@ def chatgpt(prompt):
         {"role": "assistant", "content": first_response.choices[0].message.content}
     )
     messages.append(
-        {"role": "user", "content": "Please provide 5 good resources supporting this asnwer"}
+        {"role": "user", "content": "Please provide 5 good resources supporting this asnwer in JSON format as an array or 'resources' objects each with a 'title' and a 'url'"}
     )
     second_response = client.chat.completions.create(  
           model=deployment,
           messages=chat_prompt,
-          max_tokens=150,  
+          max_tokens=750,  
           temperature=0.7,  
           top_p=0.95,  
           frequency_penalty=0,  
