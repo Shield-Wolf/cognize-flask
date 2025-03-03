@@ -48,7 +48,7 @@ def question():
 
     #sources2 = '{  "resources": [    {      "title": "Official Website of the Government of Canada",      "url": "https://www.canada.ca/en/government.html"    }    {      "title": "CIA World Factbook - Canada",      "url": "https://www.cia.gov/the-world-factbook/countries/canada/"    }    {      "title": "Encyclopedia Britannica - Ottawa",      "url": "https://www.britannica.com/place/Ottawa"    }    {      "title": "History.com - Ottawa",      "url": "https://www.history.com/topics/canada/ottawa"    }    {      "title": "National Geographic - Ottawa",      "url": "https://www.nationalgeographic.com/travel/canada/ottawa"    }  ]}'
 
-    print ("decoded_jason_sources=%s" % decoded_jason_sources)
+    print ("decoded_jason_sources= %s" % decoded_jason_sources)
     #print ("Sources2=%s" % sources2)
     #json_result = json.loads(sources2)
 
