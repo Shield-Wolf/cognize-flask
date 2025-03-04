@@ -11,12 +11,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+   print("iN iNDEX")
    return render_template('index.html')
 
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
-                               'cognize-logo-favicon.ico', mimetype='image/vnd.microsoft.icon')
+                               'cognize-logo-favicon.ico', mimetype='images/cognize-logo-favicon.ico')
 
 @app.route('/question', methods=['POST'])
 def question():
@@ -41,7 +42,7 @@ def question():
     answer = response[0]
     sources = response[1]
 
-    #Strip out the new line characters, quotes and other characters
+    #Strip out the new line characters, quotes and other characters from the JSON in the response
     decoded_jason_sources = json_decoder.decode(sources)
    
     #quote to strip out " '{    "resource1": {        "title": "Government of Canada - About Ottawa"        "url": "https://www.canada.ca/en/government/system/crown/about-ottawa.html""    }    "resource2": {        "title": "City of Ottawa Official Website"        "url": "https://ottawa.ca/en""    }    "resource3": {        "title": "Encyclopedia Britannica - Ottawa"        "url": "https://www.britannica.com/place/Ottawa""    }    "resource4": {        "title": "National Geographic - Ottawa"        "url": "https://www.nationalgeographic.com/travel/destinations/north-america/canada/ottawa/""    }    "resource5": {        "title": "Canada.ca - Welcome to Ottawa"        "url": "https://www.canada.ca/en/canadian-heritage/services/visit-ottawa.html""    }}'
@@ -53,6 +54,20 @@ def question():
     #json_result = json.loads(sources2)
 
     json_result = json.loads(decoded_jason_sources)
+
+
+    # Get all the titles and urls from resources
+    titles = []
+    urls = []
+    for resource in json_result['resources']:
+        title = resource.get('title')
+        url = resource.get('url')
+        if title and url:
+            titles.append(title)
+            urls.append(url)
+
+    print("Extracted titles: %s" % titles)
+    print("Extracted urls: %s" % urls)
 
     ###print("json result first url=%s" % json_result.sources[0].url)
     #print(python_obj["name"]) 
@@ -68,7 +83,7 @@ def question():
     # NEED TO ADD CODE TO EXTRACT THE SOURCES FROM THE RESPONSE
 
     
-    return render_template('question.html', question = question, key = key, answer = answer, sources = sources)
+    return render_template('question.html', question = question, key = key, answer = answer, sources = sources, title1 = titles[0], url1 = urls[0], title2 = titles[1], url2 = urls[1], title3 = titles[2], url3 = urls[2], title4 = titles[3], utl4 = urls[3], title5 = titles[4], url5 = urls[4])
 # @app.route('/question', methods=['POST'])
 # def question():
 #     question = request.form.get('question')
