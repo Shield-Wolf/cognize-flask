@@ -26,7 +26,7 @@ def question():
     #response = prompter.chatgpt(question)
     #response = "This is a canned response"
 
-      # Check if the input is a question
+    # Check if the input is a question
     if question and not question.strip().endswith('?'):
         print('Input is not a valid question: %s' % question)
         return render_template('index.html', error="Input must be a question ending with a '?'")
@@ -38,7 +38,8 @@ def question():
         print('Request key=%s' % os.environ.get("APP_PERMISSION_KEY" ))
         if key != os.environ.get("APP_PERMISSION_KEY"):
                print('Request for home page received with key redirecting=%s' % key)
-               return redirect(url_for('index'))
+               return render_template('index.html', error="Key is not valid")
+
 
 
     # Call Azure OpenAI
