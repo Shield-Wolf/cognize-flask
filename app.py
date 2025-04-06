@@ -25,6 +25,12 @@ def question():
     key = request.form.get('key')                               
     #response = prompter.chatgpt(question)
     #response = "This is a canned response"
+
+      # Check if the input is a question
+    if question and not question.strip().endswith('?'):
+        print('Input is not a valid question: %s' % question)
+        return render_template('index.html', error="Input must be a question ending with a '?'")
+
     if question:
         print('Request for home page received with question=%s' % question)
          # Call Azure OpenAI
